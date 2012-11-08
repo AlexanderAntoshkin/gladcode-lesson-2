@@ -2,22 +2,49 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet/less" type="text/css" href="assets/less/buttons.less">
-    <link rel="stylesheet/css" type="text/css" href="assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/common.css">
+    <link rel="stylesheet/less" type="text/css" href="assets/less/styles.less">
     <script src="assets/js/less.js" type="text/javascript"></script>
 </head>
 <body>
+<div>
 
-<a class="button box" href="#">hyperlink</a>
+    <h1>Стили кнопки</h1>
+    <table>
+        <thead>
+        <tr>
+            <td>Стиль</td>
+            <td style="text-align: center">a</td>
+            <td style="text-align: center">input</td>
+            <td style="text-align: center">button</td>
+            <td style="text-align: center">button:hover</td>
+            <td style="text-align: center">button:active</td>
+            <td style="text-align: center">button:disabled</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Основной стиль</td>
+            <td><a class="button" href="#">my button</a></td>
+            <td><input class="button" type="button" value="my button"></td>
+            <td><button class="button" type="button">my button</button></td>
+            <td><button class="button hover" type="button">my button</button></td>
+            <td><button class="button active" type="button">my button</button></td>
+            <td><button class="button" disabled="disabled" type="button">my button</button></td>
+        </tr>
+        <tr>
+            <td>Первичная кнопка</td>
+            <td><a class="button button-primary" href="#">my button</a></td>
+            <td><input class="button button-primary" type="button" value="my button"></td>
+            <td><button class="button button-primary" type="button">my button</button></td>
+            <td><button class="button button-primary hover" type="button">my button</button></td>
+            <td><button class="button button-primary active" type="button">my button</button></td>
+            <td><button class="button button-primary" disabled="disabled" type="button">my button</button></td>
+        </tr>
+        </tbody>
+    </table>
 
-<input class="button" type="button" value="i-button">
-<input class="button" type="submit" value="i-submit">
-<input class="button" type="reset" value="i-reset">
 
-<button class="button" type="button">b-button</button>
-<button class="button" type="submit">b-submit</button>
-<button class="button" type="reset">b-reset</button>
-
-
+</div>
 </body>
 </html>
