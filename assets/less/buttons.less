@@ -83,18 +83,18 @@
 
 //------------РЕАЛИЗАЦИЯ СТИЛЕЙ КНОПКИ-------------------------------------------------------------------------------
 .button {
-  .display-inline;
+  .display-inline();
   .line-height(@button-line-height);
   margin:          @button-margin;
   padding:         @button-padding;
   font:            @button-font-size Verdana, Arial, Helvetica, sans-serif;
   text-align:      center;
-  white-space: nowrap;
+  white-space:     nowrap;
   cursor:          pointer;
   text-decoration: none;
   .border-radius(6px);
 
-  .button-colors(@default-color, @default-text-color);
+.button-colors(@default-color, @default-text-color);
 }
 
 .button.button-primary {
@@ -124,6 +124,7 @@
 .button.micro {
   .button-size(0.5, 0.6);
 }
+
 .button.mini {
   .button-size(0.7, 0.8);
 }
@@ -131,10 +132,11 @@
 .button.big {
   .button-size(1.5, 1.2);
 }
+
 .button.large {
   .button-size(2, 1.6);
 }
 
-.button.normal{
+.button.normal {
   .button-size(1, 1);
 }
