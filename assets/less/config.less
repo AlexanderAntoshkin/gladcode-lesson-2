@@ -1,49 +1,12 @@
-/*******************************************************************************************************************/
-/*********************************** ОБЩИЕ ПРИМЕСИ (MIXINS)*********************************************************/
-/*******************************************************************************************************************/
 // Кросс-браузерный display: inline-block
 .display-inline() {
-  display:  inline-block; // Хак для ie
-  *display: inline;
-  *zoom:    1;
+  display:  inline-block; // Для других браузеров
+  *display: inline; // Хак для ie 7
+  *zoom:    1; // Хак для ie 7
 }
 
 // Кросс-браузерный line-height
 .line-height(@value) {
   line-height:  @value;
-  *line-height: @value;
+  *line-height: @value; // Хак для ie 7
 }
-
-// Кросс-браузерный border//
-.border(@color) {
-  border:  1px solid @color;
-  *border: 0;
-}
-
-// Кросс-браузерный box-shadow
-.box-shadow(@style, @color, @inset-style, @inset-color) {
-  box-shadow:         @style @color, @inset-style @inset-color; // CSS3
-  -webkit-box-shadow: @style @color, @inset-style @inset-color; // Для Safari и Chrome
-  -moz-box-shadow:    @style @color, @inset-style @inset-color; // Для Firefox
-}
-
-// Тень текста не буду делать кроссбраузерно, пусть обладатели старых браузеров мучаются
-.text-shadow(@color) {
-  text-shadow: 1px 1px 3px darkGray;
-}
-
-// Кросс-браузерный border-radius
-.border-radius(@radius) {
-  -webkit-border-radius: @radius; // Для Safari и Chrome
-  -moz-border-radius:    @radius; // Для Firefox
-  border-radius:         @radius; // CSS3
-}
-
-// Кросс-браузерная прозрачность
-.opacity(@opacity) {
-  opacity: @opacity / 100;
-  filter:  ~"alpha(opacity=@{opacity})";
-}
-
-
-
