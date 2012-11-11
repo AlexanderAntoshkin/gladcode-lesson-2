@@ -1,9 +1,139 @@
 //--------------ПЕРЕМЕННЫЕ----
 // Высота линии
 @button-line-height: 24px;
+// Внешний отступ
+@button-margin: 6px;
+// Внутренний отступ
+@button-padding: 8px;
+// Стандартный размер шрифта
+@button-font-size: 12px;
+// Радиус скругления углов
+@button-border-radius: 6px;
+
+// ---------------------------- Цвета кнопки
+// Цвет текста дефолтной кнопки
+@default-text-color: #555;
+// Цвет дефолтной кнопки
+@default-color: lightgray;
+// Цвет текста остальных кнопок
+@other-text-color: whitesmoke;
+// Другие цвета кнопок
+@primary-color: #0088CC;
+@red-color: #BD362F;
+@green-color: #51A351;
+@blue-color: #2F96B4;
+@yellow-color: #F89406;
+@black-color: #555555;
+//--------------ПРИМЕСИ-------
+.button-outline() {
+  outline: none;
+}
+
+.button-gradient(@dark, @light) {
+  background-color:  @light; // Для старых браузров
+  *background-color: @light; // Для старых браузров
+  background-image:  -moz-linear-gradient(bottom, @dark, @light); /* Firefox 3.6+ */
+  background-image:  -webkit-gradient(linear, left bottom, left top, color-stop(@dark), color-stop(@light)); /* Chrome 1-9, Safari 4-5 */
+  background-image:  -webkit-linear-gradient(bottom, @dark, @light); /* Chrome 10+, Safari 5.1+ */
+  background-image:  -o-linear-gradient(bottom, @dark, @light); /* Opera 11.10+ */
+  background-image:  -ms-linear-gradient(bottom, @dark, @light); /* IE10 */
+  background-image:  linear-gradient(bottom, @dark, @light); /* CSS3 */
+}
+
+// Кросс-браузерный фон кнопки
+.button-colors(@button-color, @text-color) {
+  @darken-color: darken(@button-color, 5%);
+  color: @text-color;
+  .text-shadow(@darken-color);
+  .box-shadow(0 0 2px 0, @darken-color, inset 0 0 8px, @darken-color);
+  .border(@darken-color);
+  .text-shadow(lighten(@button-color, 20%));
+  .button-gradient(@darken-color, @button-color);
+
+  &:focus {
+    .button-outline;
+  }
+
+  &.hover, &:hover {
+    color: lighten(@text-color, 15%);
+    .button-gradient(darken(@button-color, 10%), @button-color);
+  }
+
+  &.active, &:active {
+    color: lighten(@text-color, 10%);
+    .button-gradient(darken(@button-color, 15%), darken(@button-color, 5%));
+  }
+
+  &.disabled, &[disabled] {
+    cursor: not-allowed;
+    color:  lighten(@text-color, 30%);
+    .button-gradient(lighten(@button-color, 20%), lighten(@button-color, 25%));
+    .border(lighten(@button-color, 5%));
+    .opacity(50);
+    .box-shadow(0 0 2px 0, lighten(@button-color, 20%), inset 0 0 8px, lighten(@button-color, 20%));
+  }
+}
+
+.button-size(@padding, @font) {
+  padding:   @button-padding*@padding;
+  font-size: @button-font-size*@font;
+}
 
 //--------------СТИЛИ---------
 .button {
   .display-inline();
   .line-height(@button-line-height);
+  margin:          @button-margin;
+  padding:         @button-padding;
+  font:            @button-font-size Verdana, Arial, Helvetica, sans-serif;
+  text-align:      center;
+  white-space:     nowrap;
+  cursor:          pointer;
+  text-decoration: none;
+  border-radius: @button-border-radius;
+  .button-colors(@default-color, @default-text-color);
+}
+
+.button.button-primary {
+  .button-colors(@primary-color, @other-text-color);
+}
+
+.button.button-red {
+  .button-colors(@red-color, @other-text-color);
+}
+
+.button.button-green {
+  .button-colors(@green-color, @other-text-color);
+}
+
+.button.button-blue {
+  .button-colors(@blue-color, @other-text-color);
+}
+
+.button.button-yellow {
+  .button-colors(@yellow-color, @other-text-color);
+}
+
+.button.button-black {
+  .button-colors(@black-color, @other-text-color);
+}
+
+.button.micro {
+  .button-size(0.5, 0.6);
+}
+
+.button.mini {
+  .button-size(0.7, 0.8);
+}
+
+.button.big {
+  .button-size(1.5, 1.2);
+}
+
+.button.large {
+  .button-size(2, 1.6);
+}
+
+.button.normal {
+  .button-size(1, 1);
 }
